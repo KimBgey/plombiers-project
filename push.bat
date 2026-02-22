@@ -56,8 +56,12 @@ if errorlevel 1 (
     exit /b 1
 )
 
-echo  [3/3] git push ...
-git push
+:: Récupérer la branche courante
+for /f "tokens=*" %%b in ('git branch --show-current') do set BRANCH=%%b
+echo  [3/3] git push (branche : %BRANCH%) ...
+
+:: Push avec --set-upstream automatique pour les nouvelles branches
+git push --set-upstream origin %BRANCH%
 
 if errorlevel 1 (
     echo.
@@ -67,6 +71,6 @@ if errorlevel 1 (
 )
 
 echo.
-echo  Push reussi !
+echo  Push reussi sur la branche "%BRANCH%" !
 echo.
 pause
