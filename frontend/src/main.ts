@@ -1,8 +1,19 @@
 import { createApp } from 'vue'
-import './assets/main.css'
 import App from './App.vue'
 import router from './router'
+import { createPinia } from 'pinia'
+import './assets/main.css'
 
-createApp(App)
-  .use(router)   
-  .mount('#app')
+// Initialiser le thème AVANT le montage pour éviter le flash
+const savedTheme = localStorage.getItem('theme')
+if (savedTheme === 'dark') {
+  document.documentElement.classList.add('dark')
+} else {
+  // Thème clair par défaut
+  document.documentElement.classList.remove('dark')
+}
+
+const app = createApp(App)
+app.use(createPinia())
+app.use(router)
+app.mount('#app')
