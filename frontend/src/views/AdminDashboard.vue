@@ -242,7 +242,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { api, logout } from '../lib/api'
 
-const activeTab = ref<'dashboard' | 'plumbers' | 'payments'>('dashboard')
+const activeTab = ref<string>('dashboard')
 const stats = ref<any>(null)
 const plumbers = ref<any[]>([])
 const payments = ref<any[]>([])

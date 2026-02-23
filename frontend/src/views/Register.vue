@@ -230,7 +230,7 @@ const handleSubmit = async (values: any) => {
   successMessage.value = ''
 
   try {
-    const response = await createPlumber(values)
+    await createPlumber(values)
     successMessage.value = 'Compte créé avec succès ! Redirection vers la connexion...'
     setTimeout(() => {
       router.push('/login')
