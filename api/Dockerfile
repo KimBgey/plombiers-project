@@ -9,7 +9,9 @@ RUN npm install
 
 COPY . .
 
-RUN npx prisma generate
+# Générer Prisma sans valider les variables d'env
+RUN PRISMA_HIDE_UPDATE_MESSAGE=1 npx prisma generate --no-engine || npx prisma generate
+
 RUN npm run build
 
 EXPOSE 3000
