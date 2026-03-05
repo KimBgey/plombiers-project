@@ -47,6 +47,12 @@ const router = createRouter({
       component: () => import('../views/AdminDashboard.vue'),
       meta: { requiresAuth: true },
     },
+        {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/dashMock.vue'),
+      meta: { requiresAuth: true },
+    },
     {
       path: '/:pathMatch(.*)*',
       redirect: '/',
