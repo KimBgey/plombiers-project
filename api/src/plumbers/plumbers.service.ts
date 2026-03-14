@@ -43,6 +43,7 @@ export class PlumbersService {
     return this.prisma.plumber.findMany({
       skip,
       take,
+      where: { role: 'PLUMBER' },
       orderBy: { createdAt: 'desc' },
       select: {
         id: true, name: true, email: true,
@@ -98,3 +99,4 @@ export class PlumbersService {
     return plumber
   }
 }
+
